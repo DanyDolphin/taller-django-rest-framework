@@ -1,0 +1,41 @@
+version: '3.7'
+
+services:
+
+  django:
+    build:
+      context: .
+      dockerfile: ./Dockerfile
+    container_name: taller-drf
+    stdin_open: true
+    tty: true
+    env_file:
+      - ./envs/.env.django
+    volumes:
+      - .:/app
+    ports:
+      - 8000:8000
+    depends_on:
+      - postgres
+    networks:
+      - tallerDRF
+    
+  postgres:
+    image: postgres
+    container_name: taller-drf-db
+    ports:
+      - 5432:5432
+    volumes: 
+      - tallerDRFVolume:/var/lib/postgresql/data
+    env_file:
+      - envs/.env.postgres
+    networks:
+      - tallerDRF
+
+networks:
+  tallerDRF:
+    driver: "bridge"
+
+volumes:
+  tallerDRFVolume:
+    driver: local
