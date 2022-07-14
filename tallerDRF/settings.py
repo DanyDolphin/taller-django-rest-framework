@@ -32,6 +32,9 @@ ALLOWED_HOSTS = ['*']
 # Application definition
 
 DJANGO_APPS = [
+    # Disables dark mode for admin
+    'django_non_dark_admin',
+
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -51,6 +54,9 @@ THIRD_PARTY_APPS = [
 ]
 
 INSTALLED_APPS = DJANGO_APPS + PROJECT_APPS + THIRD_PARTY_APPS
+
+# Disables dark mode for admin
+DISABLE_DARK_MODE = True
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
