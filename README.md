@@ -2,6 +2,9 @@
 
 Esta app está diseñada para impartir un taller de Django REST Framework nivel principiante. La rama `master` contiene la app inicial de Django tan solo con modelos y archivos de configuración, mientras que la rama `develop` contiene la integración con Django REST Framework.
 
+# Diagrama ER
+![Diagrama ER](taller-drf.jpg)
+
 ## Prerrequisitos
 
 1. Docker y Docker Compose

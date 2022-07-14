@@ -41,7 +41,9 @@ DJANGO_APPS = [
 ]
 
 PROJECT_APPS = [
-
+    'users',
+    'songs',
+    'playlists',
 ]
 
 INSTALLED_APPS = DJANGO_APPS + PROJECT_APPS
@@ -91,6 +93,9 @@ DATABASES = {
     }
 }
 
+# Custom user model
+
+AUTH_USER_MODEL = 'users.User'
 
 # Password validation
 # https://docs.djangoproject.com/en/4.0/ref/settings/#auth-password-validators
