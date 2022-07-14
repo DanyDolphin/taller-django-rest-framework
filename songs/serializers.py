@@ -37,3 +37,4 @@ class SongModelSerializer(serializers.ModelSerializer):
         '''Meta class'''
         model = Song
         fields = '__all__'
+        read_only_fields = ('id',)
