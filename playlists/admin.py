@@ -6,4 +6,7 @@ from django.contrib import admin
 # Models
 from playlists.models import Playlist
 
-admin.site.register(Playlist)
+class PlaylistAdmin(admin.ModelAdmin):
+    list_display = ('name', 'user', 'is_private')
+
+admin.site.register(Playlist, PlaylistAdmin)
