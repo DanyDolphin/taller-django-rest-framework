@@ -10,6 +10,9 @@ from rest_framework.response import Response
 # Models
 from songs.models import Song
 
+# Serializers
+from songs.serializers import SongSerializer, SongModelSerializer
+
 class ListCreateSongs(APIView):
     '''View to list and create songs'''
 
@@ -17,26 +20,15 @@ class ListCreateSongs(APIView):
         '''Returns a list of all songs'''
         queryset = Song.objects.all()
         return Response(
-            [{
-                'name': song.name,
-                'author': song.author,
-                'genre': song.genre
-            } for song in queryset]
+            SongModelSerializer(queryset, many=True).data
         )
 
     def post(self, request):
         '''Creates a song'''
-        song = Song(
-            name=request.data['name'],
-            author=request.data['author'],
-            genre=request.data['genre']
-        )
-        song.save()
+        serializer = SongModelSerializer(data=request.data)
+        serializer.is_valid(raise_exception=True)
+        song = serializer.save()
         return Response(
-            {
-                'name': song.name,
-                'author': song.author,
-                'genre': song.genre
-            },
+            SongModelSerializer(song).data,
             status.HTTP_201_CREATED
         )
