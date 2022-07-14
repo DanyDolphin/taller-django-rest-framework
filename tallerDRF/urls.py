@@ -23,4 +23,7 @@ urlpatterns = [
     path('users/', include('users.urls')),
     path('songs/', include('songs.urls')),
     path('playlists/', include('playlists.urls')),
+
+    # REST Framework auth endpoints
+    path('api-auth/', include('rest_framework.urls'))
 ]
